@@ -1,0 +1,60 @@
+﻿@model IEnumerable<GestionScolarite.Models.Matiere>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create", null,new { @class = "btn btn-primary" })
+</p>
+<table class="table">
+    <thead class="bg-primary text-white">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.coeff)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Assignation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.coeff)
+            </td>
+            @if (item.Assignation == "Assigned")
+            {
+                <td class="bg-success text-white">
+                    @Html.DisplayFor(modelItem => item.Assignation)
+                </td>
+            }
+            else
+            {
+                <td class="bg-danger text-white">
+                    @Html.DisplayFor(modelItem => item.Assignation)
+                </td>
+            }
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.MatiereId }, new { @class = "text-dark" })  |
+                @Html.ActionLink("Details", "Details", new { id = item.MatiereId }, new { @class = "text-dark" })  |
+                @Html.ActionLink("Delete", "Delete", new { id = item.MatiereId }, new { @class = "text-dark" })
+            </td>
+        </tr>
+        }
+    </tbody>
+
+
+</table>
